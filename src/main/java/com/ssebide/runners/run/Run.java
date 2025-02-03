@@ -2,10 +2,13 @@ package com.ssebide.runners.run;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.Id;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 
 public record Run(
+    @Id
     Integer id,
     @NotEmpty
     String title,
@@ -13,7 +16,9 @@ public record Run(
     LocalDateTime completedOn,
     @Positive
     Integer miles,
-    Location location
+    Location location,
+    @Version
+    Integer version
 ) {
     
     public Run {
